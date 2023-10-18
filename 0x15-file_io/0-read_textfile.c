@@ -20,10 +20,23 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	lett = malloc(sizeof(char) * letters);
+	if (lett == NULL)
+		return (0);
 	k = read(g, lett, letters);
+	if (k == -1)
+	{
+		free(lett);
+		return (0);
+	}
 	a = write(STDOUT_FILENO, lett, k);
+	if (a == -1)
+	{
+		free(lett);
+		return (0);
+	}
 
-	close(g);
+	if (close(g) == -1)
+		return (0);
 	free(lett);
 	return (a);
 }
