@@ -15,7 +15,13 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 
 	if (text_content != NULL)
+	{
 		clo = strlen(text_content);
+		clo++;
+	}
+	if (text_content == NULL)
+		clo = 0;
+
 	mar = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
 	g = write(mar, text_content, clo);
 
@@ -23,7 +29,8 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 	if (g == -1)
 		return (-1);
-	close(mar);
+	if (close(mar) == -1)
+		return (-1);
 	return (1);
 }
 
