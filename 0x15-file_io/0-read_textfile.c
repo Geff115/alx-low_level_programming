@@ -29,6 +29,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	a = write(STDOUT_FILENO, lett, k);
+	if (k != a)
+	{
+		free(lett);
+		return (0);
+	}
 	if (a == -1)
 	{
 		free(lett);
@@ -38,6 +43,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (close(g) == -1)
 		return (0);
 	free(lett);
-	return (a);
+	return (k);
 }
 
