@@ -9,7 +9,7 @@ void file_close(int dc);
  * Return: A pointer to the newly-allocated buffer.
  */
 
-char* buff_create(char *file_buff)
+char *buff_create(char *file_buff)
 {
 	char *buff;
 
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	k = read(fr, buff, 1028);
 	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	do {
-		if (!(fr != -1) || !(k != -1))
+		if ((fr == -1) || !(k != -1))
 		{
 			fprintf(stderr, "Error: Can't read from file %s\n", argv[1]);
 			free(buff);
