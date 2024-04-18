@@ -2,6 +2,9 @@
 
 /**
  * key_index: This function gives the index of a key.
+ * @key: A key in form of a string or an integer to get
+ * its hash value.
+ * @size: Size of the hashtable.
  *
  * Return: The index of a key.
  */
