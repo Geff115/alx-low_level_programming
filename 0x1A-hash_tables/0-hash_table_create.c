@@ -24,6 +24,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (node_ptr == NULL)
 	{
 		fprintf(stderr, "Error allocating memory for hash node\n");
+		free(table);
 		return (NULL);
 	}
 	table->array = node_ptr;
