@@ -16,16 +16,18 @@ hash_node_t *create_new_node(const char *key, const char *value)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Couldn't allocate memory for new node\n");
-		return (NULL);
+		return (0);
 	}
 	new_node->key = strdup(key);
 	new_node->value = strdup(value);
 	if (new_node->key == NULL || new_node->value == NULL)
 	{
-		free(new_node->key);
-		free(new_node->value);
+		if (new_node->key != NULL)
+			free(new_node->key);
+		if (new_node->value != NULL)
+			free(new_node->value);
 		free(new_node);
-		return (NULL);
+		return (0);
 	}
 	new_node->next = NULL;
 	return (new_node);
@@ -58,6 +60,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		temp = temp->next;
 	}
 	new_node = create_new_node(key, value);
+	if (new_node == 0)
+		return (0);
 	if (ht->array[index] != NULL)
 		new_node->next = ht->array[index];
 	ht->array[index] = new_node;
