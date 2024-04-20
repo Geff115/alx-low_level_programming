@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdbool.h>
 
 typedef struct hash_node_s
 {
