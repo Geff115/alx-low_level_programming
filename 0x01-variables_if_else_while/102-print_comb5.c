@@ -3,8 +3,8 @@
 #include <string.h>
 
 /**
- * main - This function prints all possible combinations of two two-digit numbers
- * ranging from 0 to 99.
+ * main - This function prints all possible combinations of
+ * two two-digit numbers ranging from 0 to 99.
  *
  * Return: Always 0 success.
  */
