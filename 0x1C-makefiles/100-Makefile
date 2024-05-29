@@ -1,0 +1,24 @@
+.PHONY: all check_mh clean oclean fclean re
+export CFLAGS = -Wall -Werror -Wextra -pedantic
+CC = gcc
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = rm -f
+
+all: $(NAME)
+
+check_mh:
+	if [ ! -f m.h ]; then echo "m.h not found"; exit 1; fi
+
+$(NAME): check_mh
+	$(CC) -o $@ $(SRC)
+
+clean: oclean
+	$(RM) *~ $(OBJ) || true
+
+fclean: clean
+	$(RM) $(NAME) || true
+
+re: fclean all
+	|| true
