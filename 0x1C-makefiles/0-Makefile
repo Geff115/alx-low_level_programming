@@ -1,2 +1,2 @@
 all:
-	gcc -o school school.c
+	gcc -Wall -Werror -Wextra -pedantic -o school school.c
